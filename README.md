@@ -29,19 +29,18 @@ The goal of our project was to compare the efficacy of several different models.
 Stochastic Volatility Inspired (SVI) was originally created by Merrill Lynch in 1999 using the principles of the Heston model, and it now has many extensions including SSVI and SVI-JW. Due to its popularity at real-world options desks and its relative simplicity, this model will act as the "baseline" for our project when comparing the performance of other models.  SVI model takes the log-moneyness as its input, which in turn is a function of strike price ($K$) and forward ($F$) where $F = S e^{rt}$. There are multiple parametrizations of SVI, but the most commonly used for its versatility is the raw parametrization:
 
 $$\delta(k) = a + b \left( \rho(k-m) + \sqrt{(k-m)^2 + \sigma^2} \right)$$
-
 In our project, each of the parameters $a$, $b$, $\rho$, $m$, and $\sigma$ (not to be confused with the volatility) are determined by performing a least-squares fit against the implied volatility from the data set.
 
-3. (Uran)
+2. (Uran)
 
 
-4. (Julius)
+3. (Julius)
 
 
-5. (Yvonne)
+4. (Yvonne)
 
 
-6. (Nico)
+5. (Nico)
 
 
 
