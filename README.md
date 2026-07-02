@@ -4,7 +4,7 @@
 
 Abstract:
 The market does not price options the way Black-Scholes assumes (with constant volatility). Instead, implied volatility varies sharply across strikes (the “smile”). We will construct candidate models, stress test them on volatile market days and by starving them of data, measure model quality with P&L consequences, and compare their results to a baseline Black-Scholes model.
---
+
 
 Background:
 Stock options are financial contracts which give the buyer the right to purchase or sell stock at a given price at any time before a given expiration date. A contract granting the right to purchase stock is a "call option",  while a contract bestowing the right to sell is a "put option." Investors who purchase options contracts are most often interested in maximizing the return on their investments, so a common practice is to model the price of an option over time.
