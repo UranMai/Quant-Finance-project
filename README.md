@@ -5,8 +5,9 @@
 Abstract:
 The market does not price options the way Black-Scholes assumes (with constant volatility). Instead, implied volatility varies sharply across strikes (the “smile”). We will construct candidate models, stress test them on volatile market days and by starving them of data, measure model quality with P&L consequences, and compare their results to a baseline Black-Scholes model.
 
+--
+Background
 
-Background:
 Stock options are financial contracts which give the buyer the right to purchase or sell stock at a given price at any time before a given expiration date. A contract granting the right to purchase stock is a "call option",  while a contract bestowing the right to sell is a "put option." Investors who purchase options contracts are most often interested in maximizing the return on their investments, so a common practice is to model the price of an option over time.
 
 One of the most widely used models (albeit, often with minor modifications) is the Black-Scholes model. The Black-Scholes model takes as input parameters the stock price ($S_0$), the fixed purchase/selling price given in the contract ($K$), the risk-free interest rate ($r$), the time to expiration of the contract ($t$), and the volatility of the stock ($\sigma$). Then Black-Scholes outputs the expected price of the option. However, one major drawback of this model is that it assumes that volatility is constant in time. In reality, volatility is a stochastic process, which means that volatility will vary over time, and volatility is the only input of the Black-Scholes model which is not observable from market data. So, one can instead use the market price of an option to "reverse engineer" the volatility from the Black-Scholes model. The volatility which is obtained this way is the "implied volatility." In other words, when the volatility is equal to the implied volatility, the market price will be equal to the predicted output of the Black-Scholes model. If all other input parameters are fixed, then Black-Scholes will yield a single, unique implied volatility.
