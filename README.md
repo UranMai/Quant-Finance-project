@@ -5,8 +5,8 @@
 Abstract:
 The market does not price options the way Black-Scholes assumes (with constant volatility). Instead, implied volatility varies sharply across strikes (the “smile”). We will construct candidate models, stress test them on volatile market days and by starving them of data, measure model quality with P&L consequences, and compare their results to a baseline Black-Scholes model.
 
---
-Background
+---
+### Background
 
 Stock options are financial contracts which give the buyer the right to purchase or sell stock at a given price at any time before a given expiration date. A contract granting the right to purchase stock is a "call option",  while a contract bestowing the right to sell is a "put option." Investors who purchase options contracts are most often interested in maximizing the return on their investments, so a common practice is to model the price of an option over time.
 
@@ -14,14 +14,14 @@ One of the most widely used models (albeit, often with minor modifications) is t
 
 However, models produced using real-world data indicate a different trend. When plotting strike price ($K$) against the implied volatility (IV), one often observes a curved shape which turns up at both extremes of the range of strike prices, forming a smile. This suggests that the implied volatility is not constant, and that it depends on strike price. Interestingly, this phenomenon emerges not from mathematics, but from real-world options trading behavior. In particular, volatility smiles did not emerge in market data prior to the Crash of 1987. So, adjusting options pricing models to account for implied volatility smiles is a relatively new and still active area of research in quantitative finance. 
 
--- 
-Data & Preparation 
+--- 
+### Data & Preparation 
 
 
 
 
---
-Models
+---
+### Models
 
 The goal of our project was to compare the efficacy of several different models. Each of our models was predicated on the assumption of no arbitrage in an effort to maintain consistency with Black-Scholes and with each other model. The models used are each summarized as follows:
 
@@ -32,8 +32,26 @@ $$\delta(k) = a + b \left( \rho(k-m) + \sqrt{(k-m)^2 + \sigma^2} \right)$$
 
 In our project, each of the parameters $a$, $b$, $\rho$, $m$, and $\sigma$ (not to be confused with the volatility) are determined by performing a least-squares fit against the implied volatility from the data set.
 
-2. (Uran)
+2. **Heston Stochastic Volatility Model** 
 
+The Heston model assumes that the underlying asset price and the variance process follows the SDE:
+
+$$dS_t = rS_t dt + \sqrt{v_t}S_t dW_t^S$$
+$$dv_t = \kappa(\theta - v_t) dt + \sigma\sqrt{v_t} dW_t^v$$
+
+The two Brownian motions are correlated:  
+
+$$dW_t^S dW_t^v = \rho dt$$
+
+Parameters:    
+$v_0$	- Initial variance  
+$\kappa$ - Speed of mean reversion  
+$\theta$ - Long-run variance  
+$\sigma$ - Volatility of variance  
+$\rho$ - Correlation between asset and variance shocks  
+$\lambda$ - Volatility risk premium  
+In our implementation, the volatility risk premium is fixed at: $$\lambda = 0$$  
+The calibrated parameter vector is therefore: $$\Theta = (v_0, \kappa, \theta, \sigma, \rho)$$
 
 3. (Julius)
 
