@@ -17,8 +17,12 @@ However, models produced using real-world data indicate a different trend. When 
 --- 
 ### Data & Preparation 
 
+Due to restrictions on the size of our repository, the data used in this project is linked in a Google Drive folder: [https://drive.google.com/drive/u/0/folders/11Rpz_8LG4-GgNxxLdBaLD-Q2IyWzblP1. ] (https://drive.google.com/drive/folders/11Rpz_8LG4-
+GgNxxLdBaLD-Q2IyWzblP1?usp=sharing)
 
+The data set consists of end of day options data from the entire 2023 calendar year for AAPL, NVDA, QQQ, SLV, SPX, and TSLA. The original data came from OptionDX.com. Our data cleaning pipeline is included in our repository. Notably, we filtered out "junk" including zero/crossed bids, nonsensical IVs, expiries shorter than ~1 week or longer than a year, time-to-expiry and log-moneyness. 
 
+Each of our models' efficacy will be partially determined by its consistency when starved of data. In particular, the models will be trained using a randomly selected 80% of the cases from a given day. Then, we will compare the model's prediction to the remaining 20% of the data points, called the "holdout" data points. The routine used to randomly split the data into a training set and the remaining holdout set for a given ticker is also included in our repository. 
 
 ---
 ### Models
@@ -65,5 +69,5 @@ The calibrated parameter vector is therefore: $$\Theta = (v_0, \kappa, \theta, \
 
 
 --
-Analysis & Conclusions
+### Analysis & Conclusions
 
