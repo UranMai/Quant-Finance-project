@@ -17,8 +17,7 @@ However, models produced using real-world data indicate a different trend. When 
 --- 
 ### Data & Preparation 
 
-Due to restrictions on the size of our repository, the data used in this project is linked in a Google Drive folder: [https://drive.google.com/drive/u/0/folders/11Rpz_8LG4-GgNxxLdBaLD-Q2IyWzblP1. ] (https://drive.google.com/drive/folders/11Rpz_8LG4-
-GgNxxLdBaLD-Q2IyWzblP1?usp=sharing)
+Due to restrictions on the size of our repository, the data used in this project is linked in a Google Drive folder: [https://drive.google.com/drive/u/0/folders/11Rpz_8LG4-GgNxxLdBaLD-Q2IyWzblP1. ]
 
 The data set consists of end of day options data from the entire 2023 calendar year for AAPL, NVDA, QQQ, SLV, SPX, and TSLA. The original data came from OptionDX.com. Our data cleaning pipeline is included in our repository. Notably, we filtered out "junk" including zero/crossed bids, nonsensical IVs, expiries shorter than ~1 week or longer than a year, time-to-expiry and log-moneyness. 
 
