@@ -63,7 +63,17 @@ The calibrated parameter vector is therefore: $$\Theta = (v_0, \kappa, \theta, \
 4. (Yvonne)
 
 
-5. (Nico)
+5. **Risk-Neutral Density Mixture (Bahra) — (Nico)**
+
+Instead of parametrizing the smile (SVI) or the price dynamics (Heston), this model parametrizes the **risk-neutral probability distribution itself**. By Breeden–Litzenberger, the density is the second strike-derivative of the call price (up to discounting), so a valid model must never imply negative probabilities ("butterfly arbitrage"). We therefore model the normalized underlying $x = S_T/F$ per expiry as a mixture of $M=3$ lognormals — component $i$ lognormal with **mean** $m_i$ and log-standard-deviation $s_i$ (so $m_i$ is $\mathbb E[x_i]$ itself, *not* the log-mean) — with the means free but rescaled so the forward is repriced *exactly*:
+
+$$g_x(x) = \sum_{i=1}^{M}\pi_i \mathrm{LN}(x;\ m_i,\ s_i), \qquad \pi_i \ge 0,\quad \sum_i \pi_i = 1, \quad \mathbb E[x] = \sum_i \pi_i m_i = 1 .$$
+
+Non-negativity of the density (no butterfly arbitrage) and the forward condition then hold **by construction** rather than by penalty or post-hoc check. Prices are closed-form — with $k = \log(K/F)$ the log-moneyness and $N$ the standard normal CDF, the normalized call $c = C/(e^{-rT}F)$ is
+
+$$c(k) = \sum_{i=1}^{M}\pi_i\Big[ m_i N(d_{1,i}) - e^{k} N(d_{2,i}) \Big], \qquad d_{1,i} = \frac{\log m_i - k + s_i^2/2}{s_i}, \quad d_{2,i} = d_{1,i} - s_i$$
+
+(no quadrature anywhere; at $m_i \equiv 1$ each term is plain Black–Scholes). The implied-volatility smile is recovered afterwards by inverting Black–Scholes in total variance, which is well-posed because that price is strictly increasing in total variance. Calibration is spread-weighted least squares per expiry on the visible 80% of each day. A small theorem motivates the free means: any *unit-mean* lognormal mixture satisfies put–call symmetry, forcing an exactly symmetric smile with zero skew for every $M$ — so freeing the (mean-corrected) means is precisely what makes equity skew representable. Implementation, holdout evaluation, a monthly robustness sweep with parameter-stability tracking, spread-noise uncertainty bands, and butterfly/calendar arbitrage checks with a certified calendar repair are in `Bahra_mixture_model.ipynb`.
 
 
 
