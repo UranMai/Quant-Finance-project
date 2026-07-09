@@ -65,7 +65,7 @@ $$w(k,\tau) = \sigma_{\text{impl}}(k,\tau)^2\,\tau$$
 
 with a Gaussian Process prior:
 
-$$w(\mathbf{x}) \sim \mathcal{GP}\big(m(\mathbf{x}),\,K(\mathbf{x},\mathbf{x}')\big), \qquad \mathbf{x}=(k,\tau).$$
+$$w(\mathbf{x}) \sim \mathcal{GP}\big(m(\mathbf{x}),K(\mathbf{x},\mathbf{x}')\big), \qquad \mathbf{x}=(k,\tau).$$
 
 In implementation, we use a constant-mean GP with a Matern covariance kernel plus a white-noise term, so the model can adapt to both smooth regions and local smile curvature while remaining numerically stable. Conditioning on observed market points gives the posterior mean surface and posterior uncertainty at unseen strikes and maturities. The implied volatility is then recovered as
 
