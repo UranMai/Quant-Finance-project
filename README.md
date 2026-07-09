@@ -57,7 +57,21 @@ $\lambda$ - Volatility risk premium
 In our implementation, the volatility risk premium is fixed at: $$\lambda = 0$$  
 The calibrated parameter vector is therefore: $$\Theta = (v_0, \kappa, \theta, \sigma, \rho)$$
 
-3. (Julius)
+3. **Gaussian Process Regression Surface Model**
+
+This model treats the implied volatility surface as a nonparametric regression problem on total variance. Let log-moneyness be $k = \log(K/F)$ and time-to-expiry be $\tau$. Rather than fitting IV directly, we model
+
+$$w(k,\tau) = \sigma_{\text{impl}}(k,\tau)^2\,\tau$$
+
+with a Gaussian Process prior:
+
+$$w(\mathbf{x}) \sim \mathcal{GP}\big(m(\mathbf{x}),\,K(\mathbf{x},\mathbf{x}')\big), \qquad \mathbf{x}=(k,\tau).$$
+
+In implementation, we use a constant-mean GP with a Matern covariance kernel plus a white-noise term, so the model can adapt to both smooth regions and local smile curvature while remaining numerically stable. Conditioning on observed market points gives the posterior mean surface and posterior uncertainty at unseen strikes and maturities. The implied volatility is then recovered as
+
+$$\sigma_{\text{impl}}(k,\tau)=\sqrt{\frac{w(k,\tau)}{\tau}}.$$
+
+At present, arbitrage conditions are checked diagnostically rather than imposed as hard constraints during training.
 
 
 4. (Yvonne)
