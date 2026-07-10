@@ -118,7 +118,7 @@ The following values are currently reported for SPX on December 29, 2023:
 | Heston | 0.0268 | 0.0257 | 6 | 2 |
 | Gaussian | 0.0013 | 0.0024 | 25 | 0 |
 | NN | 0.0237 | Not reported | 0 | 0 |
-| Bahra | 0.0186 | 0.0152 | 0 (by construction) | 9 → 0 (repaired) |
+| Bahra | 0.0130 | 0.0126 | 0 (by construction) | 9 → 0 (repaired) |
 
 **Interpretation**:
 
