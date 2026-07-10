@@ -34,7 +34,7 @@ The goal of our project was to compare the efficacy of several different models.
 | Heston | [`models/Heston_model.ipynb`](models/Heston_model.ipynb) | Stochastic asset price and variance | Uran |
 | Gaussian process | [`models/Gaussian_process.ipynb`](models/Gaussian_process.ipynb) | Nonparametric total-variance surface with uncertainty | Julius |
 | Deep smoothing neural network | [`models/SmoothingByNeuralNet.ipynb`](models/SmoothingByNeuralNet.ipynb) | Neural surface with an arbitrage penalty | Yvonne |
-| Risk-neutral density mixture | [`models/Bahra_mixture_model.ipynb`](models/Bahra_mixture_model.ipynb) | Mixture model for the terminal risk-neutral density | Nico |
+| Risk-neutral density mixture (Bahra) | [`models/Bahra_mixture_model.ipynb`](models/Bahra_mixture_model.ipynb) | Mixture model for the terminal risk-neutral density | Nico |
 
 
 1. **Stochastic Volatility Inspired (SVI)** (Aurora)
