@@ -107,6 +107,6 @@ To quantify the performance of each of the models in the previous section, we fi
 | Heston     |  0.0268                |           0.0257            |          6           |         2           |  
 | Gaussian   |  0.0013                |                    0.0024   |                 25   |          0          | 
 | NN         |  0.0237                |                             |               0      |          0          |  
-| Bahra      |                        |                             |                      |                     |  
+| Bahra      |  0.0186                |  0.0152                     |  0 (By construction) |                     |  
 
 Further results may be found in each model's `.ipynb` file and/or in the slides deck linked at https://docs.google.com/presentation/d/1Z2kijoJG47XhLJ9XLKOpwQzBNL_0fSX6K9suzaW-Lks/edit?slide=id.g3f7e755a775_1_0#slide=id.g3f7e755a775_1_0 
