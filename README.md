@@ -101,11 +101,11 @@ $$c(k) = \sum_{i=1}^{M}\pi_i\Big[ m_i N(d_{1,i}) - e^{k} N(d_{2,i}) \Big], \qqua
 To quantify the performance of each of the models in the previous section, we first verified how well each model fit the 20% of held out cases using a RMSE calculation. In addition, each model was trained and designed with an assumption of static-arbitrage, but we check how well each model conforms to this assumption by measuring butterfly arbitrage and calendar arbitrage violations, both from the market data set and from the model's results. A summary of our results for SPX on 12-29-2023 follows: 
 
 | Model Name | RMSE IV (Training Data)| RMSE IV (Test/Holdout Data) | Butterfly Violations | Calendar Violations | 
-|------------|---------|----------------------|---------------------|---------------------|  
-| SVI        |  0.0497  |          |            |         0            |  
-| Heston     |  0.0818  |               |     6            |         12            |  
-| Gaussian   |  0.00271    |               |     24               |          0           | 
-| NN         |  0.0237  |             |       0          |          0           |  
-| Bahra      |         |                  |          |                     |  
+|------------|------------------------|-----------------------------|----------------------|---------------------|  
+| SVI        |  0.0497                |                             |                      |         0            |  
+| Heston     |  0.0818                |                             |                 6    |         12           |  
+| Gaussian   |  0.0013                |                    0.0024   |                 25   |          0           | 
+| NN         |  0.0237                |                             |               0      |          0           |  
+| Bahra      |                        |                             |                      |                      |  
 
 Further results may be found in each model's `.ipynb` file and/or in the slides deck linked at https://docs.google.com/presentation/d/1Z2kijoJG47XhLJ9XLKOpwQzBNL_0fSX6K9suzaW-Lks/edit?slide=id.g3f7e755a775_1_0#slide=id.g3f7e755a775_1_0 
