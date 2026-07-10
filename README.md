@@ -120,7 +120,11 @@ The following values are currently reported for SPX on December 29, 2023:
 | NN | 0.0237 | Not reported | 0 | 0 |
 | Bahra | 0.0186 | 0.0152 | 0 (by construction) | 9 → 0 (repaired) |
 
-### Interpretation
+**Interpretation**:
+
+...
+
 
 ---
+### Supplementary
 Further results may be found in each model's `.ipynb` file and/or in the slides deck linked at https://docs.google.com/presentation/d/1Z2kijoJG47XhLJ9XLKOpwQzBNL_0fSX6K9suzaW-Lks/edit?slide=id.g3f7e755a775_1_0#slide=id.g3f7e755a775_1_0 
