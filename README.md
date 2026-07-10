@@ -103,7 +103,7 @@ To quantify the performance of each of the models in the previous section, we fi
 | Model Name | RMSE IV | Butterfly Violations | Calendar Violations | 
 |------------|---------|----------------------|---------------------| 
 | SVI        |  0.0497  |                      |         0            |  
-| Heston     |  0.0183  |         0            |         0            |  
+| Heston     |  0.012558  |         6            |         12            |  
 | Gaussian   |  0.00271    |       24               |          0           | 
 | NN         |  0.0237  |            0          |          0           |  
 | Bahra      |         |                      |                     |  
