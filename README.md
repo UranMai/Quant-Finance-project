@@ -3,7 +3,7 @@
 ---
 
 Abstract:
-The market does not price options the way Black-Scholes assumes (with constant volatility). Instead, implied volatility varies sharply across strikes (the “smile”). We will construct candidate models, stress test them on volatile market days and by starving them of data, measure model quality with P&L consequences, and compare their results to a baseline Black-Scholes model.
+The market does not price options the way Black-Scholes assumes (with constant volatility). Instead, implied volatility varies sharply across strikes (the “smile”). We benchmark five candidate models, stress test them on volatile market days and by starving them of data, measure model quality with P&L consequences, and compare their results to a baseline Black-Scholes model.
 
 ---
 ### Background
@@ -27,6 +27,15 @@ Each of our models' efficacy will be partially determined by its consistency whe
 ### Models
 
 The goal of our project was to compare the efficacy of several different models. Each of our models was predicated on the assumption of no arbitrage in an effort to maintain consistency with Black-Scholes and with each other model. The models used are each summarized as follows:
+
+| Model | Implementation | Main idea | Contributor |
+|---|---|---|---|
+| SVI | [`models/svi.ipynb`](models/svi.ipynb) | Parametric total-variance smile | Aurora |
+| Heston | [`models/Heston_model.ipynb`](models/Heston_model.ipynb) | Stochastic asset price and variance | Uran |
+| Gaussian process | [`models/Gaussian_process.ipynb`](models/Gaussian_process.ipynb) | Nonparametric total-variance surface with uncertainty | Julius |
+| Deep smoothing neural network | [`models/SmoothingByNeuralNet.ipynb`](models/SmoothingByNeuralNet.ipynb) | Neural surface with an arbitrage penalty | Yvonne |
+| Risk-neutral density mixture | [`models/Bahra_mixture_model.ipynb`](models/Bahra_mixture_model.ipynb) | Mixture model for the terminal risk-neutral density | Nico |
+
 
 1. **Stochastic Volatility Inspired (SVI)** (Aurora)
 
@@ -99,14 +108,19 @@ $$c(k) = \sum_{i=1}^{M}\pi_i\Big[ m_i N(d_{1,i}) - e^{k} N(d_{2,i}) \Big], \qqua
 
 ---
 ### Analysis & Conclusions
-To quantify the performance of each of the models in the previous section, we first verified how well each model fit the 20% of held out cases using a RMSE calculation. In addition, each model was trained and designed with an assumption of static-arbitrage, but we check how well each model conforms to this assumption by measuring butterfly arbitrage and calendar arbitrage violations, both from the market data set and from the model's results. A summary of our results for SPX on 12-29-2023 follows: 
+To quantify the performance of each of the models in the previous section, we first verified how well each model fit the 20% of held out cases using a RMSE calculation. In addition, each model was trained and designed with an assumption of static-arbitrage, but we check how well each model conforms to this assumption by measuring butterfly arbitrage and calendar arbitrage violations, both from the market data set and from the model's results. 
 
-| Model Name | RMSE IV (Training Data)| RMSE IV (Test/Holdout Data) | Butterfly Violations | Calendar Violations | 
-|------------|------------------------|-----------------------------|----------------------|---------------------|  
-| SVI        |  0.0497                |                             |                      |         0           |  
-| Heston     |  0.0268                |           0.0257            |          6           |         2           |  
-| Gaussian   |  0.0013                |                    0.0024   |                 25   |          0          | 
-| NN         |  0.0237                |                             |               0      |          0          |  
-| Bahra      |  0.0186                |  0.0152                     |  0 (by construction) |9 → 0 (repaired)     |  
+The following values are currently reported for SPX on December 29, 2023:
 
+| Model | Training IV RMSE | Holdout IV RMSE | Butterfly Violations | Calendar Violations |
+|---|---:|---:|---:|---:|
+| SVI | 0.0497 | Not reported | Not reported | 0 |
+| Heston | 0.0268 | 0.0257 | 6 | 2 |
+| Gaussian | 0.0013 | 0.0024 | 25 | 0 |
+| NN | 0.0237 | Not reported | 0 | 0 |
+| Bahra | 0.0186 | 0.0152 | 0 (by construction) | 9 → 0 (repaired) |
+
+### Interpretation
+
+---
 Further results may be found in each model's `.ipynb` file and/or in the slides deck linked at https://docs.google.com/presentation/d/1Z2kijoJG47XhLJ9XLKOpwQzBNL_0fSX6K9suzaW-Lks/edit?slide=id.g3f7e755a775_1_0#slide=id.g3f7e755a775_1_0 
