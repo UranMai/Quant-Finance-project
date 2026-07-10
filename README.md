@@ -77,10 +77,17 @@ The primary advantage of this approach is that it fits a probability distributio
 This allows for uncertainty quantification and error bounds, which could inform decision making in practice.
 
 
-4. (Yvonne)
+4. **Deep Smoothing By Neural Network** (For no Arbitrage) (Yvonne)
+Reproduced results from “Deep Smoothing of the Implied Volatility Surface” by Ackerer et al, performed a model risk study of implied volatility surface construction. 
+Compared a classical parametric method (SVI), a plain neural network, and a no-arbitrage-constrained neural network (deep smoothing) on real SPX options on 2023-12-29.
+Findings: 
+On fit (RMSE), SVI wins, it posts the lowest reconstruction error.
+But it does not require no-arbitrage, violating marketing principle. Similarly for the unconstrained vanilla NN, while it fits well, fits a surfaces that violate the butterfly no-arbitrage condition. 
+Deep smoothing’s no-arbitrage penalty term in the lose function drives the butterfly violation towards zero, at a small cost to RMSE cost. 
+Detailed results in slides: https://docs.google.com/presentation/d/1Z2kijoJG47XhLJ9XLKOpwQzBNL_0fSX6K9suzaW-Lks/edit?slide=id.g3f7e755a775_1_0#slide=id.g3f7e755a775_1_0
+Implementation in file SmoothingbyNeuralNetwork.ipynb
 
-
-5. **Risk-Neutral Density Mixture (Bahra) — (Nico)**
+6. **Risk-Neutral Density Mixture (Bahra) — (Nico)**
 
 Instead of parametrizing the smile (SVI) or the price dynamics (Heston), this model parametrizes the **risk-neutral probability distribution itself**. By Breeden–Litzenberger, the density is the second strike-derivative of the call price (up to discounting), so a valid model must never imply negative probabilities ("butterfly arbitrage"). We therefore model the normalized underlying $x = S_T/F$ per expiry as a mixture of $M=3$ lognormals — component $i$ lognormal with **mean** $m_i$ and log-standard-deviation $s_i$ (so $m_i$ is $\mathbb E[x_i]$ itself, *not* the log-mean) — with the means free but rescaled so the forward is repriced *exactly*:
 
