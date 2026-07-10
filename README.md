@@ -73,6 +73,9 @@ $$\sigma_{\text{impl}}(k,\tau)=\sqrt{\frac{w(k,\tau)}{\tau}}.$$
 
 At present, arbitrage conditions are checked diagnostically rather than imposed as hard constraints during training.
 
+The primary advantage of this approach is that it fits a probability distribution, rather than a single point esimate. 
+This allows for uncertainty quantification and error bounds, which could inform decision making in practice.
+
 
 4. (Yvonne)
 
