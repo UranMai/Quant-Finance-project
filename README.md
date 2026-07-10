@@ -74,6 +74,7 @@ $$\sigma_{\text{impl}}(k,\tau)=\sqrt{\frac{w(k,\tau)}{\tau}}.$$
 At present, arbitrage conditions are checked diagnostically rather than imposed as hard constraints during training. The primary advantage of this approach is that it fits a probability distribution, rather than a single point esimate. This allows for uncertainty quantification and error bounds, which could inform decision making in practice. Implementation in `Gaussian_process.ipynb`.
 
 4. **Deep Smoothing By Neural Network** (For no Arbitrage) (Yvonne)
+
 Reproduced results from “Deep Smoothing of the Implied Volatility Surface” by Ackerer et al, performed a model risk study of implied volatility surface construction. Compared a classical parametric method (SVI), a plain neural network, and a no-arbitrage-constrained neural network (deep smoothing) on real SPX options on 2023-12-29.
 
 Findings: 
@@ -96,7 +97,7 @@ $$c(k) = \sum_{i=1}^{M}\pi_i\Big[ m_i N(d_{1,i}) - e^{k} N(d_{2,i}) \Big], \qqua
 (no quadrature anywhere; at $m_i \equiv 1$ each term is plain Black–Scholes). The implied-volatility smile is recovered afterwards by inverting Black–Scholes in total variance, which is well-posed because that price is strictly increasing in total variance. Calibration is spread-weighted least squares per expiry on the visible 80% of each day. A small theorem motivates the free means: any *unit-mean* lognormal mixture satisfies put–call symmetry, forcing an exactly symmetric smile with zero skew for every $M$ — so freeing the (mean-corrected) means is precisely what makes equity skew representable. Implementation, holdout evaluation, a monthly robustness sweep with parameter-stability tracking, spread-noise uncertainty bands, and butterfly/calendar arbitrage checks with a certified calendar repair are in `Bahra_mixture_model.ipynb`.
 
 
---
+---
 ### Analysis & Conclusions
 To quantify the performance of each of the models in the previous section, we first verified how well each model fit the 20% of held out cases using a RMSE calculation. In addition, each model was trained and designed with an assumption of static-arbitrage, but we check how well each model conforms to this assumption by measuring butterfly arbitrage and calendar arbitrage violations, both from the market data set and from the model's results. A summary of our results for SPX on 12-29-2023 follows: 
 
