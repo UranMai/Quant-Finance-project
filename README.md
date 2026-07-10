@@ -114,7 +114,7 @@ The following values are currently reported for SPX on December 29, 2023:
 
 | Model | Training IV RMSE | Holdout IV RMSE | Butterfly Violations | Calendar Violations |
 |---|---:|---:|---:|---:|
-| SVI | 0.0497 | Not reported | Not reported | 0 |
+| SVI | 0.05744 | 0.08410 | 42 | 0 |
 | Heston | 0.0268 | 0.0257 | 6 | 2 |
 | Gaussian | 0.0013 | 0.0024 | 25 | 0 |
 | NN | 0.0237 | Not reported | 0 | 0 |
