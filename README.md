@@ -129,8 +129,8 @@ In this table, we see that the orders of magnitude for the RMSEs for each model 
 This is only a small snapshot of our findings, and additional calculations and plots for each model can be found in the appropriate file and in the figures folder. 
 
 ---
-### Same model were run for TSLA ticker 
-The following values are currently reported for SPX on December 29, 2023:
+### Same models were run for TSLA ticker 
+The following values are currently reported for TSLA on December 29, 2023:
 
 | Model | Training IV RMSE | Holdout IV RMSE | Butterfly Violations | Calendar Violations |
 |---|---:|---:|---:|---:|
