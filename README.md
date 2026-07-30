@@ -117,7 +117,7 @@ The following values are currently reported for SPX on December 29, 2023:
 | Model | Training IV RMSE | Holdout IV RMSE | Butterfly Violations | Calendar Violations |
 |---|---:|---:|---:|---:|
 | SVI | 0.05744 | 0.08410 | 42 | 0 |
-| Heston | 0.0268 | 0.0257 | 6 | 2 |
+| Heston | 0.0305 | 0.0288 | 0 | 0 |
 | Gaussian | 0.0013 | 0.0024 | 25 | 0 |
 | NN | 0.0237 | Not reported | 0 | 0 |
 | Bahra | 0.0130 | 0.0126 | 0 (by construction) | 9 → 0 (repaired) |
@@ -127,6 +127,20 @@ The following values are currently reported for SPX on December 29, 2023:
 In this table, we see that the orders of magnitude for the RMSEs for each model are almost identical, except for the Gaussian model. Furthermore, SVI has the worst errors, and they are at least twice as large as each of the other models' errors. The models constructed to explicitly avoid butterfly arbitrage (NN and Bahra) do exactly that, while the other models each feature some number of arbitrage violations. Once again, SVI has the largest number of butterfly violations. However, the models which avoid butterfly arbitrage seem to sacrifice something in regard to calendar arbitrage. While calendar violations were repaired for Bahra, NN sees a much larger number of violations, which are also reflected in the "zigzag" shape of the calendar plot for this model.
 
 This is only a small snapshot of our findings, and additional calculations and plots for each model can be found in the appropriate file and in the figures folder. 
+
+---
+### Same model were run for TSLA ticker 
+The following values are currently reported for SPX on December 29, 2023:
+
+| Model | Training IV RMSE | Holdout IV RMSE | Butterfly Violations | Calendar Violations |
+|---|---:|---:|---:|---:|
+| SVI | - | - | - | 0 |
+| Heston | 0.0343 | 0.0279 | 0 | 0 |
+| Gaussian | - | - | - | - |
+| NN | - | - | - | - |
+| Bahra | - | - | - | - |
+
+
 
 ---
 ### Supplementary
