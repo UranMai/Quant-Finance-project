@@ -116,7 +116,7 @@ The following values are currently reported for SPX on December 29, 2023:
 
 | Model | Training IV RMSE | Holdout IV RMSE | Butterfly Violations | Calendar Violations |
 |---|---:|---:|---:|---:|
-| SVI | 0.05744 | 0.08410 | 42 | 0 |
+| SVI | 0.05744 | 0.08410 | 0 | 0 |
 | Heston | 0.0305 | 0.0288 | 0 | 0 |
 | Gaussian | 0.0013 | 0.0024 | 25 | 0 |
 | NN | 0.0237 | Not reported | 0 | 0 |
@@ -134,7 +134,7 @@ The following values are currently reported for TSLA on December 29, 2023:
 
 | Model | Training IV RMSE | Holdout IV RMSE | Butterfly Violations | Calendar Violations |
 |---|---:|---:|---:|---:|
-| SVI | - | - | - | 0 |
+| SVI | 0.1515 | 0.1238 | 0 | 0 |
 | Heston | 0.0343 | 0.0279 | 0 | 0 |
 | Gaussian | - | - | - | - |
 | NN | - | - | - | - |
