@@ -136,7 +136,7 @@ The following values are currently reported for TSLA on December 29, 2023:
 |---|---:|---:|---:|---:|
 | SVI | 0.1515 | 0.1238 | 0 | 0 |
 | Heston | 0.0343 | 0.0279 | 0 | 0 |
-| Gaussian | - | - | - | - |
+| Gaussian | 0.0016 | 0.0025 | 34 | 0 |
 | NN | - | - | - | - |
 | Bahra | - | - | - | - |
 
